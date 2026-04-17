@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: |
+      Staging model for customer data. Transforms raw customer data by:
+      - Trimming string values
+      - Renaming columns to follow naming conventions
+      - Filtering invalid records
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_name
+        description: Customer company name (trimmed)
+        data_tests:
+          - not_null
+
+      - name: customer_email
+        description: Customer contact email address (trimmed)
+        data_tests:
+          - not_null
+
+      - name: signup_date
+        description: Date the customer signed up
