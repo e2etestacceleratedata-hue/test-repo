@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: |
+      Staging model for customer data. Applies light transformations (trimmed strings)
+      to raw customer records from seed data. One row per customer.
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer (primary key)
+        data_type: int
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: Customer company name (trimmed)
+        data_type: string
+        tests:
+          - not_null
+
+      - name: email
+        description: Customer contact email address (trimmed)
+        data_type: string
+        tests:
+          - not_null
+
+      - name: signup_date
+        description: Date the customer signed up
+        data_type: date
