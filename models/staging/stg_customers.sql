@@ -1,6 +1,6 @@
 {{
   config(
-    materialized='view'
+    materialized='table'
   )
 }}
 
@@ -11,8 +11,8 @@ with source as (
 renamed as (
     select
         customer_id,
-        name,
-        email,
+        trim(name) as name,
+        trim(email) as email,
         signup_date
     from source
 )
