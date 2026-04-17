@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: Staging model for customer data from raw seed
+    columns:
+      - name: customer_id
+        description: Unique customer identifier
+        data_tests:
+          - unique
+          - not_null
+
+      - name: customer_name
+        description: Customer company name (trimmed)
+        data_tests:
+          - not_null
+
+      - name: email
+        description: Customer contact email (lowercase, trimmed)
+        data_tests:
+          - not_null
+
+      - name: signup_date
+        description: Date the customer signed up
