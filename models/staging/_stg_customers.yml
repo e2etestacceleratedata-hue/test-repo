@@ -27,3 +27,23 @@ models:
         description: Date when the customer signed up for the service
         data_tests:
           - not_null
+
+unit_tests:
+  - name: test_stg_customers_preserves_input
+    description: |
+      Verify that stg_customers correctly passes through customer data
+      with trimmed string values
+    model: stg_customers
+    given:
+      - input: source('raw', 'customers')
+        rows:
+          - customer_id: 1
+            name: 'Acme'
+            email: 'ops@acme.com'
+            signup_date: '2024-01-15'
+    expect:
+      rows:
+        - customer_id: 1
+          name: 'Acme'
+          email: 'ops@acme.com'
+          signup_date: '2024-01-15'
