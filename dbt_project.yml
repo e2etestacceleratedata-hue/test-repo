@@ -23,7 +23,6 @@ models:
 
 seeds:
   lifecycle:
-    +schema: raw
     customers:
       +column_types:
         customer_id: int
