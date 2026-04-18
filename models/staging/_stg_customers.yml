@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: Staging layer for customer data from raw source. Provides a clean, 1:1 view of customer records with trimmed string values.
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer. Primary key.
+        data_type: int
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: Customer company name, trimmed of leading/trailing whitespace.
+        data_type: string
+        tests:
+          - not_null
+
+      - name: email
+        description: Customer contact email address, trimmed of leading/trailing whitespace.
+        data_type: string
+        tests:
+          - not_null
+
+      - name: signup_date
+        description: Date the customer signed up.
+        data_type: date
