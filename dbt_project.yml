@@ -18,6 +18,8 @@ clean-targets:
 models:
   lifecycle:
     +materialized: table
+    staging:
+      +materialized: view
 
 seeds:
   lifecycle:
